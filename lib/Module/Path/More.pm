@@ -1,7 +1,7 @@
 package Module::Path::More;
 
-our $DATE = '2014-12-03'; # DATE
-our $VERSION = '0.22'; # VERSION
+our $DATE = '2014-12-10'; # DATE
+our $VERSION = '0.23'; # VERSION
 
 use 5.010001;
 use strict;
@@ -180,7 +180,7 @@ Module::Path::More - Get path to locally installed Perl module
 
 =head1 VERSION
 
-This document describes version 0.22 of Module::Path::More (from Perl distribution Module-Path-More), released on 2014-12-03.
+This document describes version 0.23 of Module::Path::More (from Perl distribution Module-Path-More), released on 2014-12-10.
 
 =head1 SYNOPSIS
 
@@ -197,7 +197,7 @@ This document describes version 0.22 of Module::Path::More (from Perl distributi
  @path = module_path(module=>'Foo::Bar', all=>1, find_pmc=>1, find_pod=>1);
 
  # just a shortcut for module_path(module=>'Foo',
-                                   find_pm=>0, find_pmc=>0, find_pod=>1);
+ #                                 find_pm=>0, find_pmc=>0, find_pod=>1);
  $path = pod_path(module=>'Foo');
 
 =head1 DESCRIPTION
@@ -301,16 +301,17 @@ Return value:
 
 =head1 SEE ALSO
 
-L<Module::Path>. This module is a fork of Module::Path. It contains features
-that are not (or have not been accepted) in the original module, namely: finding
-all matches instead of the first found match, and finding C<.pmc/.pod> in
-addition to .pm files. B<Note that the interface is different>
-(Module::Path::More accept hash/named argument) so the two modules are not
-drop-in replacements for each other. Also, note that by default Module::Path
-does I<not> do an C<abs_path()> to each file it finds, unlike Module::Path. I
-think that's the sensible default (doing abs_path() or resolving symlinks will
-sometimes fail or expose filesystem quirks that we might not want to deal with
-at all). If you want absolute path, set the C<abs> argument to true.
+L<Module::Path>. Module::Path::More is actually a fork of Module::Path.
+Module::Path::More contains features that are not (or have not been accepted) in
+the original module, namely: finding all matches instead of the first found
+match, and finding C<.pmc/.pod> in addition to .pm files. B<Note that the
+interface is different> (Module::Path::More accepts hash/named arguments) so the
+two modules are not drop-in replacements for each other. Also, note that by
+default Module::Path::More does B<not> do an C<abs_path()> to each file it
+finds. I think this module's choice (not doing abs_path) is a more sensible
+default, because doing abs_path() or resolving symlinks will sometimes fail or
+expose filesystem quirks that we might not want to deal with at all. However, if
+you want to do abs_path, you can do so by setting C<abs> option to true.
 
 Command-like utility is not included in this distribution, unlike L<mpath> in
 C<Module-Path>. However, you can use L<pmpath> from C<App-PMUtils> which uses
