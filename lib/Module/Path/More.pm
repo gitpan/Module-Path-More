@@ -1,7 +1,7 @@
 package Module::Path::More;
 
 our $DATE = '2014-12-26'; # DATE
-our $VERSION = '0.24'; # VERSION
+our $VERSION = '0.25'; # VERSION
 
 use 5.010001;
 use strict;
@@ -203,7 +203,7 @@ Module::Path::More - Get path to locally installed Perl module
 
 =head1 VERSION
 
-This document describes version 0.24 of Module::Path::More (from Perl distribution Module-Path-More), released on 2014-12-26.
+This document describes version 0.25 of Module::Path::More (from Perl distribution Module-Path-More), released on 2014-12-26.
 
 =head1 SYNOPSIS
 
@@ -351,6 +351,8 @@ References:
 =item * L<https://github.com/neilbowers/Module-Path/issues/7>
 
 =item * L<https://github.com/neilbowers/Module-Path/issues/10>
+
+=item * https://rt.cpan.org/Public/Bug/Display.html?id=100979
 
 =back
 

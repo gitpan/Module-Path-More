@@ -55,7 +55,7 @@
          "web" : "https://github.com/perlancar/perl-Module-Path-More"
       }
    },
-   "version" : "0.24",
+   "version" : "0.25",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.018002"
