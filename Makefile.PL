@@ -13,7 +13,8 @@ my %WriteMakefileArgs = (
   "ABSTRACT" => "Get path to locally installed Perl module",
   "AUTHOR" => "perlancar <perlancar\@cpan.org>",
   "CONFIGURE_REQUIRES" => {
-    "ExtUtils::MakeMaker" => 0
+    "ExtUtils::MakeMaker" => 0,
+    "Perl::osnames" => "0.09"
   },
   "DISTNAME" => "Module-Path-More",
   "EXE_FILES" => [],
@@ -21,7 +22,6 @@ my %WriteMakefileArgs = (
   "MIN_PERL_VERSION" => "5.010001",
   "NAME" => "Module::Path::More",
   "PREREQ_PM" => {
-    "Perinci::Sub::Util" => "0.38",
     "Rinci" => "1.1.0"
   },
   "TEST_REQUIRES" => {
@@ -30,7 +30,7 @@ my %WriteMakefileArgs = (
     "IPC::Open3" => 0,
     "Test::More" => "0.98"
   },
-  "VERSION" => "0.23",
+  "VERSION" => "0.24",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -42,7 +42,7 @@ my %FallbackPrereqs = (
   "File::Spec" => 0,
   "IO::Handle" => 0,
   "IPC::Open3" => 0,
-  "Perinci::Sub::Util" => "0.38",
+  "Perl::osnames" => "0.09",
   "Rinci" => "1.1.0",
   "Test::More" => "0.98"
 );

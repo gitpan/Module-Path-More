@@ -1,13 +1,11 @@
 package Module::Path::More;
 
-our $DATE = '2014-12-10'; # DATE
-our $VERSION = '0.23'; # VERSION
+our $DATE = '2014-12-26'; # DATE
+our $VERSION = '0.24'; # VERSION
 
 use 5.010001;
 use strict;
 use warnings;
-
-use Perinci::Sub::Util qw(gen_modified_sub);
 
 require Exporter;
 our @ISA       = qw(Exporter);
@@ -16,6 +14,11 @@ our @EXPORT_OK = qw(module_path pod_path);
 my $SEPARATOR;
 
 our %SPEC;
+
+$SPEC{':package'} = {
+    v => 1.1,
+    summary => 'Get path to locally installed Perl module',
+};
 
 BEGIN {
     if ($^O =~ /^(dos|os2)/i) {
@@ -147,23 +150,43 @@ sub module_path {
     }
 }
 
-gen_modified_sub(
-    output_name => 'pod_path',
-    base_name   => 'module_path',
-    summary     => 'Find path to Perl POD files',
+$SPEC{pod_path} = {
+    v => 1.1,
+    summary => 'Get path to locally installed POD',
     description => <<'_',
 
-Shortcut for `module_path(..., find_pm=>0, find_pmc=>0, find_pod=>1,
-find_prefix=>1, )`.
+This is a shortcut for:
+
+    module_path(%args, find_pm=>0, find_pmc=>0, find_pod=>1, find_prefix=>0)
 
 _
-    remove_args => [qw/find_pm find_pmc find_pod find_prefix/],
-    output_code => sub {
-        my %args = @_;
-        module_path(
-            %args, find_pm=>0, find_pmc=>0, find_pod=>1, find_prefix=>0);
+    args => {
+        module => {
+            summary => 'Module name to search',
+            schema  => 'str*',
+            req     => 1,
+            pos     => 0,
+        },
+        all => {
+            summary => 'Return all results instead of just the first',
+            schema  => 'bool',
+            default => 0,
+        },
+        abs => {
+            summary => 'Whether to return absolute paths',
+            schema  => 'bool',
+            default => 0,
+        },
     },
-);
+    result => {
+        schema => ['any' => of => ['str*', ['array*' => of => 'str*']]],
+    },
+    result_naked => 1,
+};
+sub pod_path {
+    my %args = @_;
+    module_path(%args, find_pm=>0, find_pmc=>0, find_pod=>1, find_prefix=>0);
+}
 
 1;
 # ABSTRACT: Get path to locally installed Perl module
@@ -180,7 +203,7 @@ Module::Path::More - Get path to locally installed Perl module
 
 =head1 VERSION
 
-This document describes version 0.23 of Module::Path::More (from Perl distribution Module-Path-More), released on 2014-12-10.
+This document describes version 0.24 of Module::Path::More (from Perl distribution Module-Path-More), released on 2014-12-26.
 
 =head1 SYNOPSIS
 
@@ -272,10 +295,11 @@ Return value:
 
 =head2 pod_path(%args) -> array|str
 
-Find path to Perl POD files.
+Get path to locally installed POD.
 
-Shortcut for C<< module_path(..., find_pm=E<gt>0, find_pmc=E<gt>0, find_pod=E<gt>1,
-find_prefix=E<gt>1, ) >>.
+This is a shortcut for:
+
+ module_path(%args, find_pm=>0, find_pmc=>0, find_pod=>1, find_prefix=>0)
 
 Arguments ('*' denotes required arguments):
 
@@ -309,9 +333,10 @@ interface is different> (Module::Path::More accepts hash/named arguments) so the
 two modules are not drop-in replacements for each other. Also, note that by
 default Module::Path::More does B<not> do an C<abs_path()> to each file it
 finds. I think this module's choice (not doing abs_path) is a more sensible
-default, because doing abs_path() or resolving symlinks will sometimes fail or
-expose filesystem quirks that we might not want to deal with at all. However, if
-you want to do abs_path, you can do so by setting C<abs> option to true.
+default, because usually there is no actual need to do so and doing abs_path()
+or resolving symlinks will sometimes fail or expose filesystem quirks that we
+might not want to deal with at all. However, if you want to do abs_path, you can
+do so by setting C<abs> option to true.
 
 Command-like utility is not included in this distribution, unlike L<mpath> in
 C<Module-Path>. However, you can use L<pmpath> from C<App-PMUtils> which uses
@@ -335,7 +360,7 @@ Please visit the project's homepage at L<https://metacpan.org/release/Module-Pat
 
 =head1 SOURCE
 
-Source repository is at L<https://github.com/perlancar/perl-Alt-Module-Path-SHARYANTO>.
+Source repository is at L<https://github.com/perlancar/perl-Module-Path-More>.
 
 =head1 BUGS
 
