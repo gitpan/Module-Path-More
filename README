@@ -2,8 +2,8 @@ NAME
     Module::Path::More - Get path to locally installed Perl module
 
 VERSION
-    This document describes version 0.25 of Module::Path::More (from Perl
-    distribution Module-Path-More), released on 2014-12-26.
+    This document describes version 0.26 of Module::Path::More (from Perl
+    distribution Module-Path-More), released on 2014-12-28.
 
 SYNOPSIS
      use Module::Path::More qw(module_path pod_path);
@@ -138,7 +138,7 @@ SEE ALSO
 
     *   <https://github.com/neilbowers/Module-Path/issues/10>
 
-    *   https://rt.cpan.org/Public/Bug/Display.html?id=100979
+    *   <https://rt.cpan.org/Public/Bug/Display.html?id=100979>
 
 HOMEPAGE
     Please visit the project's homepage at
@@ -146,7 +146,7 @@ HOMEPAGE
 
 SOURCE
     Source repository is at
-    <https://github.com/perlancar/perl-Module-Path-More>.
+    <https://github.com/perlancar/perl-Alt-Module-Path-SHARYANTO>.
 
 BUGS
     Please report any bugs or feature requests on the bugtracker website

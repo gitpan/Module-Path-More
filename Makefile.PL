@@ -28,9 +28,10 @@ my %WriteMakefileArgs = (
     "File::Spec" => 0,
     "IO::Handle" => 0,
     "IPC::Open3" => 0,
+    "Test::Exception" => 0,
     "Test::More" => "0.98"
   },
-  "VERSION" => "0.25",
+  "VERSION" => "0.26",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -44,6 +45,7 @@ my %FallbackPrereqs = (
   "IPC::Open3" => 0,
   "Perl::osnames" => "0.09",
   "Rinci" => "1.1.0",
+  "Test::Exception" => 0,
   "Test::More" => "0.98"
 );
 
