@@ -1,7 +1,7 @@
 package Module::Path::More;
 
-our $DATE = '2014-12-28'; # DATE
-our $VERSION = '0.26'; # VERSION
+our $DATE = '2014-12-29'; # DATE
+our $VERSION = '0.27'; # VERSION
 
 use 5.010001;
 use strict;
@@ -184,8 +184,7 @@ _
     result_naked => 1,
 };
 sub pod_path {
-    my %args = @_;
-    module_path(%args, find_pm=>0, find_pmc=>0, find_pod=>1, find_prefix=>0);
+    module_path(@_, find_pm=>0, find_pmc=>0, find_pod=>1, find_prefix=>0);
 }
 
 1;
@@ -203,7 +202,7 @@ Module::Path::More - Get path to locally installed Perl module
 
 =head1 VERSION
 
-This document describes version 0.26 of Module::Path::More (from Perl distribution Module-Path-More), released on 2014-12-28.
+This document describes version 0.27 of Module::Path::More (from Perl distribution Module-Path-More), released on 2015-12-29.
 
 =head1 SYNOPSIS
 

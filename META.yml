@@ -25,7 +25,7 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Module-Path-More
   homepage: https://metacpan.org/release/Module-Path-More
   repository: git://github.com/perlancar/perl-Alt-Module-Path-SHARYANTO.git
-version: '0.26'
+version: '0.27'
 x_Dist_Zilla:
   perl:
     version: '5.018002'
@@ -205,7 +205,7 @@ x_Dist_Zilla:
             -
               class: Pod::Weaver::Section::Completion::PerinciCmdLine
               name: '@Author::PERLANCAR/Completion::PerinciCmdLine'
-              version: '0.08'
+              version: '0.09'
             -
               class: Pod::Weaver::Section::Homepage::DefaultCPAN
               name: '@Author::PERLANCAR/Homepage::DefaultCPAN'
